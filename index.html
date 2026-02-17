@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="description" content="Offline-first Personal Finance Manager" />
+    <title>SmartBudget</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                900: '#111827',
+                800: '#1f2937',
+                700: '#374151',
+                50: '#f9fafb',
+              }
+            }
+          },
+        },
+      }
+    </script>
+
+    <script>
+      // Polyfill process for environment variables safely
+      window.process = window.process || {};
+      window.process.env = window.process.env || {};
+      window.process.env.API_KEY = window.process.env.API_KEY || '';
+      
+      // Robust Global Error Handler
+      window.onerror = function(message, source, lineno, colno, error) {
+        console.error("Global Error:", message, error);
+        const root = document.getElementById('root');
+        if (root && root.innerHTML.trim() === '') {
+           const errDiv = document.createElement('div');
+           errDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:white;color:#1f2937;padding:2rem;z-index:99999;overflow:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:ui-sans-serif, system-ui, sans-serif;';
+           errDiv.innerHTML = `
+             <div style="max-width:500px;width:100%;padding:2rem;background:#fff;border-radius:1rem;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);border:1px solid #e5e7eb;">
+               <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:1rem;color:#ef4444;">App Crash</h2>
+               <div style="background:#fef2f2;padding:1rem;border-radius:0.5rem;margin-bottom:1.5rem;border:1px solid #fecaca;text-align:left;overflow-x:auto;">
+                 <p style="font-weight:700;margin-bottom:0.5rem;font-size:0.875rem;color:#991b1b;">${message}</p>
+                 <p style="font-size:0.75rem;color:#b91c1c;font-family:monospace;">${source}:${lineno}:${colno}</p>
+               </div>
+               <button onclick="localStorage.clear();window.location.reload()" style="padding:0.75rem 1.5rem;background:#3b82f6;color:white;border:none;border-radius:0.5rem;font-weight:700;cursor:pointer;font-size:0.875rem;transition:background 0.2s;">
+                 Clear Data & Reload
+               </button>
+             </div>
+           `;
+           document.body.appendChild(errDiv);
+        }
+      };
+    </script>
+
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.574.0",
+    "xlsx": "https://esm.sh/xlsx@^0.18.5",
+    "jspdf": "https://esm.sh/jspdf@^4.1.0",
+    "jspdf-autotable": "https://esm.sh/jspdf-autotable@^5.0.7",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.96.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "vite-plugin-pwa": "https://esm.sh/vite-plugin-pwa@^1.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-QUO83QG_.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-BxgqRc0a.js">
+  <link rel="modulepreload" crossorigin href="/assets/charts-BUGZg0Uw.js">
+  <link rel="modulepreload" crossorigin href="/assets/utils-BuRKUcWe.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-uIXPTG9k.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body class="bg-gray-50 text-gray-900 antialiased selection:bg-blue-100 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <div id="root"></div>
+</body>
+</html>
