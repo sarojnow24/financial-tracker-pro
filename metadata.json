@@ -1,0 +1,5 @@
+{
+  "name": "Financial Tracker",
+  "description": "Offline-first Personal Finance Management System with multi-account support, transfers, and rich reporting.",
+  "requestFramePermissions": []
+}
